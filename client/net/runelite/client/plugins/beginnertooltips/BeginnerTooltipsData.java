@@ -1,0 +1,12 @@
+package net.runelite.client.plugins.beginnertooltips;
+
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
+final class BeginnerTooltipsData {
+   static final Map<Integer, String> OBJECTS = ImmutableMap.builder().put(65384, "Where you can sacrifice items for points, and spend points to unlock perks.").put(65477, "Turn Olympian resources into charges, convert Olympian raid components, and craft TOA Warden entry keys out of excess TOA rares.").put(51498, "Upgrade the stats of tiered weapons/armour by sacrificing duplicates, and upgrade gems.<br><br>NOTE: The increased stats only show in the equipment interface.").put(65471, "High level herblore recipes.").put(65464, "Used for cooking or burning logs if 'Bonfires' are unlocked.").put(30936, "Craft ranged/magic armour here.").put(32506, "Craft magical equipment here.").put(22721, "Smelt bars and jewellery here. Right-click \"Smelt-items\" for jewellery.").put(65257, "Soul Harvest relic takers: Sacrifice soul shards here for prayer XP.").put(65339, "Leagues-only teleporter that takes you to commonly overpopulated areas for more spawns in separate instances.").put(65382, "Monthly-vote-rewards: Every month, get extra rewards for daily consecutive votes on RuLocus.<br><br>Vote-token-store: Spend vote tokens from ::claimvotes on items.<br><br>Vote-streak-store: Get vote streak points for maintaining vote streaks. Each week of consecutive voting gets your more points. Week 1 - 1 point, Week 2 - 2 points, Week 3 onward - 3 points.").put(409, "Restore your prayer, or use bones/ensouled-heads on it to gain Prayer XP. Don't forget the prayer skilling outfit!").put(65474, "Teleport-to-task: A convenience feature to teleport straight to your current task. If there are multiple locations, you will be given an option to choose.<br><br>Slayer-instance: go into a private instance with respawning NPCs of your current slayer task.").put(65260, "Spend 'Clue Points' here to unlock Clue hunting perks.<br><br>Obtain Clue Points by completing Clue Scrolls.").build();
+   static final Map<String, String> NPCS = ImmutableMap.builder().put("Nixite", "High level Slayer Master. Right-click for non-boss assignments.").put("The Sage", "Unlock Relics here and claim lost League items.<br><br>Bulk-trade-in-clue-items: trade in your excess clue uniques for random event tokens.").build();
+
+   private BeginnerTooltipsData() {
+   }
+}

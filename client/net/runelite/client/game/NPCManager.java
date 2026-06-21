@@ -1,0 +1,49 @@
+package net.runelite.client.game;
+
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Singleton
+public class NPCManager {
+   private static final Logger log = LoggerFactory.getLogger(NPCManager.class);
+   private final NpcInfoClient npcInfoClient;
+   private Map<Integer, NpcInfo> npcMap = Collections.emptyMap();
+
+   @Inject
+   private NPCManager(NpcInfoClient npcInfoClient, ScheduledExecutorService scheduledExecutorService) {
+      this.npcInfoClient = npcInfoClient;
+      scheduledExecutorService.execute(this::loadNpcs);
+   }
+
+   @Nullable
+   public NpcInfo getNpcInfo(int npcId) {
+      return (NpcInfo)this.npcMap.get(npcId);
+   }
+
+   public void put(int npcId, NpcInfo info) {
+      this.npcMap.put(npcId, info);
+   }
+
+   @Nullable
+   public Integer getHealth(int npcId) {
+      NpcInfo npcInfo = (NpcInfo)this.npcMap.get(npcId);
+      return npcInfo == null ? null : npcInfo.getHitpoints();
+   }
+
+   private void loadNpcs() {
+      try {
+         this.npcMap = this.npcInfoClient.getNpcs();
+      } catch (IOException var2) {
+         IOException e = var2;
+         log.warn("error loading npc stats", e);
+      }
+
+   }
+}

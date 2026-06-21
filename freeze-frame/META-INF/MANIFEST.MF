@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: Freeze Frame
+Implementation-Version: 237.20260615
+

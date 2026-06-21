@@ -1,0 +1,19 @@
+package net.runelite.client.plugins.itemstats.stats;
+
+import net.runelite.api.Client;
+
+public abstract class Stat {
+   private final String name;
+
+   Stat(String name) {
+      this.name = name;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public abstract int getValue(Client var1);
+
+   public abstract int getMaximum(Client var1);
+}

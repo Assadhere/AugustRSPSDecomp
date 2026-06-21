@@ -1,0 +1,123 @@
+package net.runelite.client.plugins.worldhopper;
+
+import java.util.Collections;
+import java.util.Set;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Keybind;
+
+@ConfigGroup("worldhopper")
+public interface WorldHopperConfig extends Config {
+   String GROUP = "worldhopper";
+
+   @ConfigItem(
+      keyName = "previousKey",
+      name = "Quick-hop previous",
+      description = "When you press this key you'll hop to the previous world.",
+      position = 0
+   )
+   default Keybind previousKey() {
+      return new Keybind(37, 192);
+   }
+
+   @ConfigItem(
+      keyName = "nextKey",
+      name = "Quick-hop next",
+      description = "When you press this key you'll hop to the next world.",
+      position = 1
+   )
+   default Keybind nextKey() {
+      return new Keybind(39, 192);
+   }
+
+   @ConfigItem(
+      keyName = "quickhopOutOfDanger",
+      name = "Quick-hop out of dangerous worlds",
+      description = "Don't hop to a PvP/high risk world when quick-hopping.",
+      position = 2
+   )
+   default boolean quickhopOutOfDanger() {
+      return true;
+   }
+
+   @ConfigItem(
+      keyName = "showSidebar",
+      name = "Show world switcher sidebar",
+      description = "Show sidebar containing all worlds that mimics in-game interface.",
+      position = 4
+   )
+   default boolean showSidebar() {
+      return true;
+   }
+
+   @ConfigItem(
+      keyName = "ping",
+      name = "Show world ping",
+      description = "Shows ping to each game world.",
+      position = 5
+   )
+   default boolean ping() {
+      return true;
+   }
+
+   @ConfigItem(
+      keyName = "showMessage",
+      name = "Show world hop message in chat",
+      description = "Shows what world is being hopped to in the chat.",
+      position = 6
+   )
+   default boolean showWorldHopMessage() {
+      return true;
+   }
+
+   @ConfigItem(
+      keyName = "menuOption",
+      name = "Show hop-to menu option",
+      description = "Adds Hop-to menu option to the friends list and friends chat members list.",
+      position = 7
+   )
+   default boolean menuOption() {
+      return true;
+   }
+
+   @ConfigItem(
+      keyName = "subscriptionFilter",
+      name = "Subscription filter",
+      description = "Only show free worlds, member worlds, or both types of worlds in sidebar.",
+      position = 8
+   )
+   default SubscriptionFilterMode subscriptionFilter() {
+      return SubscriptionFilterMode.BOTH;
+   }
+
+   @ConfigItem(
+      keyName = "regionFilter",
+      name = "Region filter",
+      description = "Only show and quick-hop to worlds in specific regions.",
+      position = 9
+   )
+   default Set<RegionFilterMode> regionFilter() {
+      return Collections.emptySet();
+   }
+
+   @ConfigItem(
+      keyName = "worldTypeFilter",
+      name = "World type filter",
+      description = "Only show worlds of specific types.",
+      position = 10
+   )
+   default Set<WorldTypeFilter> worldTypeFilter() {
+      return Collections.emptySet();
+   }
+
+   @ConfigItem(
+      keyName = "displayPing",
+      name = "Display current ping",
+      description = "Displays ping to current game world.",
+      position = 11
+   )
+   default boolean displayPing() {
+      return false;
+   }
+}

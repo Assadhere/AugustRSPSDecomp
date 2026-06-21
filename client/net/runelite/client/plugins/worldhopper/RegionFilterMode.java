@@ -1,0 +1,46 @@
+package net.runelite.client.plugins.worldhopper;
+
+import net.runelite.http.api.worlds.WorldRegion;
+
+enum RegionFilterMode {
+   AUSTRALIA(WorldRegion.AUSTRALIA),
+   GERMANY(WorldRegion.GERMANY),
+   UNITED_KINGDOM(WorldRegion.UNITED_KINGDOM) {
+      public String toString() {
+         return "U.K.";
+      }
+   },
+   UNITED_STATES(WorldRegion.UNITED_STATES_OF_AMERICA) {
+      public String toString() {
+         return "USA";
+      }
+   },
+   BRAZIL(WorldRegion.BRAZIL);
+
+   private final WorldRegion region;
+
+   static RegionFilterMode of(WorldRegion region) {
+      switch (region) {
+         case UNITED_STATES_OF_AMERICA:
+            return UNITED_STATES;
+         case UNITED_KINGDOM:
+            return UNITED_KINGDOM;
+         case AUSTRALIA:
+            return AUSTRALIA;
+         case GERMANY:
+            return GERMANY;
+         case BRAZIL:
+            return BRAZIL;
+         default:
+            throw new IllegalStateException();
+      }
+   }
+
+   private RegionFilterMode(WorldRegion region) {
+      this.region = region;
+   }
+
+   public WorldRegion getRegion() {
+      return this.region;
+   }
+}
